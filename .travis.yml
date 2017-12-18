@@ -1,0 +1,5 @@
+install: ./gradlew assemble
+#compiler: gcc
+script:
+  #- cd native/xenon-server && ./configure && make && cd ..
+  - ./gradlew :xenon-api build
