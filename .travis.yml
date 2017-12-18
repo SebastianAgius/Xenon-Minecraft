@@ -1,8 +1,10 @@
-language:
-  - java
-  #- c
-install: ./gradlew assemble
-#compiler: gcc
+language: java
+sudo: required
+
+before_install:
+  - sudo apt-cache search mingw
+
+install:
+  - ./gradlew assemble
 script:
-  #- cd native/xenon-server && ./configure && make && cd ..
   - ./gradlew :xenon-api:build
