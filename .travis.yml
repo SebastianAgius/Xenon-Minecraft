@@ -2,9 +2,13 @@ language: java
 sudo: required
 
 before_install:
-  - sudo apt-cache search mingw
+  - sudo apt-get -qq update
+  - sudo apt-get -y install mingw32
 
 install:
   - ./gradlew assemble
 script:
+  - cd ./native/xenon-server
+  - make && make windows-i686 && make windows-x86_64
+  - cd ../..
   - ./gradlew :xenon-api:build
