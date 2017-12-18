@@ -8,6 +8,7 @@ Having builtin support for allowing multiple versions to connect to your server.
 We also plan to include a separate sub-project which is a proxy, it'll be almost exactly like BungeeCord and its forks except it'll be made specifically for the Xenon Minecraft Server Software. It will allow you to keep your servers in online mode. When enabled in the settings of the actual game server software you can set it to specifically only allow proxy connections. Although there are better ways which would be setting up firewall rules properly so those servers can't be accessed and only the proxy can be connected to.
 
 You can find information on these references here:
+
 * [Spigot](https://www.spigotmc.org/)
 * [Bukkit](https://bukkit.org/)
 * [Vanilla Minecraft Server](https://minecraft.net/en-us/download/server)
