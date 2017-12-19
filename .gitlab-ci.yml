@@ -6,13 +6,14 @@ build-native:
   before_script:
     - apt-get update -qq && apt-get install -y gcc mingw32
   script:
+    - "mkdir deploy"
     - "cd native/xenon-server"
     - "make && make windows-i686 && make windows-x86_64"
+    - "mv *.dll ../../deploy/ && mv *.so ../../deploy"
     - "cd ../.."
   artifacts:
     paths:
-      - native/xenon-server/*.dll
-      - native/xenon-server/*.so
+      - deploy/*.*
 
 build-java:
   cache:
@@ -24,7 +25,9 @@ build-java:
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
   script:
-    - "./gradlew assemble"
+    - "mkdir deploy"
+    - "./gradlew :xenon-api:build"
+    - "mv xenon-api/build/libs/*.jar deploy/"
   artifacts:
     paths:
-      - xenon-api/build/libs/*.jar
+      - deploy/*.*
