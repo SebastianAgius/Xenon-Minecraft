@@ -1,5 +1,3 @@
-image: java:8-jdk
-
 stages:
   - build
 
@@ -7,13 +5,9 @@ before_script:
   - apt-get update -qq && apt-get install -y mingw32
   - export GRADLE_USER_HOME=`pwd`/.gradle
 
-cache:
-  paths:
-    - .gradle/wrapper
-    - .gradle/caches
-
 build-native:
   stage: build
+  image: gcc:7.2.0
   script:
     - "cd native/xenon-server"
     - "make && make windows-i686 && make windows-x86_64"
@@ -24,6 +18,11 @@ build-native:
       - native/xenon-server/*.so
 
 build-java:
+  cache:
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
+  image: java:8-jdk
   stage: build
   script:
     - "./gradlew assemble"
