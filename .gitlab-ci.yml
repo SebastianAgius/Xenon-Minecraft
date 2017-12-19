@@ -1,7 +1,33 @@
+image: java:8-jdk
+
+stages:
+  - build
+
 before_script:
   - apt-get update -qq && apt-get install -y mingw32
+  - export GRADLE_USER_HOME=`pwd`/.gradle
 
-compile:
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+build-native:
+  stage: build
   script:
     - "cd native/xenon-server"
     - "make && make windows-i686 && make windows-x86_64"
+    - "cd ../.."
+  artifacts:
+    paths:
+      - native/xenon-server/*.dll
+      - native/xenon-server/*.so
+
+build-java:
+  stage: build
+  script:
+    - "./gradlew assemble"
+    - "./gradlew :xenon-api:build"
+  artifcats:
+    paths:
+      - xenon-api/build/libs/*.jar
