@@ -1,0 +1,12 @@
+group 'com.aussie.xenonminecraft'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    compile project(":xenon-api")
+}
+
+task fatJar(type: Jar) {
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }}
+    with jar
+}
