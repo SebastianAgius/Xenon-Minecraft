@@ -7,7 +7,7 @@ default: linux
 
 linux: $(SRC)
 	$(CC) -shared -o xsm-linux-x86_64.so $(CFLAGS) $^
-	$(CC) -shared -m32 -o xsm-linux.so $(CFLAGS) $^
+	$(CC) -shared -m32 -pedantic-errors -std=c89 -o xsm-linux.so $(CFLAGS) $^
 
 windows-i686: $(SRC)
 	CC=i686-w64-mingw32-gcc
