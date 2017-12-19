@@ -4,7 +4,7 @@ stages:
 build-native:
   stage: build
   before_script:
-    - apt-get update -qq && apt-get install -y gcc mingw32
+    - apt-get update -qq && apt-get install -y gcc mingw32 i686-gcc
   script:
     - "mkdir deploy"
     - "cd native/xenon-server"
@@ -26,7 +26,6 @@ build-java:
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
   script:
-    - "uname -m"
     - "mkdir deploy"
     - "./gradlew :xenon-api:build"
     - "mv xenon-api/build/libs/*.jar deploy/"
