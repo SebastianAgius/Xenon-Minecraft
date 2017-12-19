@@ -1,6 +1,10 @@
 stages:
   - build
 
+artifacts:
+    paths:
+      - deploy/*.*
+
 build-native:
   stage: build
   before_script:
@@ -11,9 +15,6 @@ build-native:
     - "make && make windows-i686 && make windows-x86_64"
     - "mv *.dll ../../deploy/ && mv *.so ../../deploy"
     - "cd ../.."
-  artifacts:
-    paths:
-      - deploy/*.*
 
 build-java:
   cache:
@@ -28,6 +29,3 @@ build-java:
     - "mkdir deploy"
     - "./gradlew :xenon-api:build"
     - "mv xenon-api/build/libs/*.jar deploy/"
-  artifacts:
-    paths:
-      - deploy/*.*
