@@ -4,7 +4,7 @@ stages:
 build-native:
   stage: build
   before_script:
-    - apt-get update -qq && apt-get install -y gcc mingw32 i686-gcc
+    - apt-get update -qq && apt-get install -y gcc mingw32
   script:
     - "mkdir deploy"
     - "cd native/xenon-server"
