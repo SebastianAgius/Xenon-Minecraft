@@ -28,6 +28,6 @@ build-java:
   script:
     - "./gradlew assemble"
     - "./gradlew :xenon-api:build"
-  artifcats:
+  artifacts:
     paths:
       - xenon-api/build/libs/*.jar
