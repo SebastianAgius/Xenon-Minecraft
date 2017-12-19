@@ -26,6 +26,7 @@ build-java:
   before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
   script:
+    - "uname -m"
     - "mkdir deploy"
     - "./gradlew :xenon-api:build"
     - "mv xenon-api/build/libs/*.jar deploy/"
