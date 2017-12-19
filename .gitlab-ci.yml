@@ -1,2 +1,7 @@
 before_script:
   - apt-get update -qq && apt-get install mingw32
+
+compile:
+  script:
+    - "cd native/xenon-server"
+    - "make && make windows-i686 && make windows-x86_64"
