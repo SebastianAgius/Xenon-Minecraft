@@ -1,3 +1,4 @@
 rootProject.name = 'XenonMinecraft'
 include 'xenon-api'
+include 'xenon-server'
 
