@@ -9,9 +9,9 @@ build-java:
   image: java:8-jdk
   stage: build
   before_script:
-    - export GRADLE_USER_HOME=`pwd`/.gradle
-  script:
+    - "export GRADLE_USER_HOME=`pwd`/.gradle"
     - "mkdir deploy"
+  script:
     - "./gradlew :xenon-server:fatJar"
     - "mv xenon-server/build/libs/*.jar deploy/"
   artifacts:
